@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/first-database
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.jdbc.Driver
+#    项目启动成功后可以在控制台看到信息  HikariPool... 就表示数据库正常连接并启动了
+
+
+# 个性化配置超时时间为 3s
+  jdbc:
+    template:
+      query-timeout: 3
+
+
+
+  redis:
+#    url: redis://user:password@example.com:6379
+    url: redis://localhost:6379
+#    也可以分开配置访问地址 host、端口 port、密码 password
+#    host: xxx
+#    posr: 6379
+#    password: xxx
+
+mybatis:
+  # 可以不写全局配置文件，所有全局配置文件的配置都放在configuration配置项中了。
+  # config-location: classpath:mybatis/mybatis-config.xml  #全局配置文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
+  # mapUnderscoreToCamelCase 是开启驼峰命名。在官方文档的 setting 中可以看到。（目的：数据库的下划线可以对应类中的驼峰）
+  configuration:
+    map-underscore-to-camel-case: true

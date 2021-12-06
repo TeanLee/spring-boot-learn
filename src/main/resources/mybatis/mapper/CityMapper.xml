@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CityMapper">
+
+    <!--    id 要和 mapper 中声明的方法名一致，返回值类型也要和声明的类型保持一致-->
+<!--    public City getCity(int id);-->
+    <select id="getCity" resultType="com.example.demo.Bean.City">
+        SELECT * FROM `first-database`.city where id=#{id};
+    </select>
+
+<!--    public City updateCity(City city);-->
+    <select id="updateCity" resultType="com.example.demo.Bean.City">
+        UPDATE `first-database`.`city` SET name=#{name}, state=#{state}, country=#{country} WHERE (id=#{id});
+    </select>
+
+    <insert id="insertCity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO `first-database`.`city` (`id`, `name`, `state`, `country`) VALUES (#{id}, #{name}, #{state}, #{country});
+    </insert>
+</mapper>
